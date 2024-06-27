@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional } from 'sequelize';
-import sequelize from '../../database/database';
+import { sequelize } from './sequelize';
+
 
 
 interface UserAttributes {
@@ -47,6 +48,7 @@ UserModel.init(
     },
     {
         sequelize,
+        
         tableName: 'users',
     }
 );

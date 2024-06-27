@@ -8,7 +8,7 @@ const sequelize = new Sequelize({
   host: 'localhost',      // Dirección del servidor de la base de datos
   port: 3306,             // Puerto del servidor de la base de datos
   username: 'root', // Nombre de usuario para la conexión
-  password: '', // Contraseña del usuario
+  password: '211218', // Contraseña del usuario
   database: 'db_eco_reporte', // Nombre de la base de datos
 });
 

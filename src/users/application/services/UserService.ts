@@ -13,4 +13,24 @@ export class UserService {
         const user = await this.userRepository.createUser({ ...createUserDTO, password: hashedPassword });
         return user;
     }
+
+    async getUserById(id: number) {
+        const user = await this.userRepository.getUserById(id);
+        return user;
+    }
+
+    async getUserByEmail(email: string) {
+        const user = await this.userRepository.getUserByEmail(email);
+        return user;
+    }
+
+    async deleteUserById(id: number) {
+        const deleted = await this.userRepository.deleteUserById(id);
+        return deleted;
+    }
+
+    async deleteUserByEmail(email: string) {
+        const deleted = await this.userRepository.deleteUserByEmail(email);
+        return deleted;
+    }
 }

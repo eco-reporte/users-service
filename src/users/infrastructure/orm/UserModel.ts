@@ -6,9 +6,12 @@ import { sequelize } from './sequelize';
 interface UserAttributes {
     id: number;
     name: string;
+    lastName: string;
     email: string;
     password: string;
     role: string;
+    gender: string;
+    phone: string;
 }
 
 interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
@@ -16,9 +19,12 @@ interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
 export class UserModel extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
     public id!: number;
     public name!: string;
+    public lastName!: string;
     public email!: string;
     public password!: string;
     public role!: string;
+    public gender!: string;
+    public phone!: string;
 }
 
 UserModel.init(
@@ -29,6 +35,10 @@ UserModel.init(
             primaryKey: true,
         },
         name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        lastName: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -45,10 +55,18 @@ UserModel.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-    },
+        gender: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        phone: {
+            type: DataTypes.STRING,
+            allowNull: false,
+    },},
     {
         sequelize,
         
         tableName: 'users',
+        timestamps: false,
     }
 );

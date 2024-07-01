@@ -50,7 +50,7 @@ export class UserController {
             const { email } = req.params;
             const deleted = await this.authService.deleteUserByEmail(email);
             res.status(200).json({ deleted });
-        } catch (error: any) { // Añadir ': any' para manejar el error como un tipo genérico
+        } catch (error: any) { // Añadir ': any' para manejar el error como un tipo genérico.
             res.status(400).json({ error: error.message });
         }
     }

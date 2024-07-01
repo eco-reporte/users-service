@@ -53,6 +53,6 @@ export class UserRepositoryImpl implements UserRepository {
     async deleteUserByEmail(email: string): Promise<boolean> {
         const deletedUser = await UserModel.destroy({ where: { email } });
 
-        return deletedUser > 0;
+        return deletedUser > 0; //server delete
     }
 }

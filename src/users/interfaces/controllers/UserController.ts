@@ -3,15 +3,15 @@ import { UserService } from '../../application/services/UserService';
 import { CreateUserDTO } from '../../application/dto/CreateUserDTO';
 
 export class UserController {
-    constructor(private userService: UserService) {}
+    constructor(private authService: UserService) {}
 
-    async createUser(req: Request, res: Response) {
+    async register(req: Request, res: Response) {
         try {
             const createUserDTO: CreateUserDTO = req.body;
-            const user = await this.userService.createUser(createUserDTO);
+            const user = await this.authService.registerUser(createUserDTO);
             res.status(201).json(user);
-        } catch (any) {
-            res.status(400).json({ any });
+        } catch (error: any) { // Añadir ': any' para manejar el error como un tipo genérico
+            res.status(400).json({ error: error.message });
         }
     }
 }

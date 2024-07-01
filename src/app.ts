@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import userRoutes from './users/interfaces/routes/authRoutes';
+import userRoutes from './users/interfaces/routes/UserRoutes';
 import { sequelize } from './users/infrastructure/orm/sequelize';
 import authRoutes from './auth/infraestructure/Routes/authRoutes';
 

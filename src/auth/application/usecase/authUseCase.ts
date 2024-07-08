@@ -20,10 +20,10 @@ type AuthResponse = {
 export class AuthUseCase {
     constructor(private repository: AuthRepository) {}
 
-    async run(email: string, password: string, role: string): Promise<AuthResponse> {
+    async run(email: string, password: string): Promise<AuthResponse> {
         try {
             // Verifica las credenciales del usuario a través del repositorio
-            const user = await this.repository.verifyUser(email, password, role);
+            const user = await this.repository.verifyUser(email, password);
 
             if (!user) {
                 return {

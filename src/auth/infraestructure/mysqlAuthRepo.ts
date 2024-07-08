@@ -11,12 +11,11 @@ export class MysqlAuthRepository implements AuthRepository {
         this.passwordService = new PasswordService();
     }
     
-    async verifyUser(email: string, password: string, role: string): Promise<Auth | null> {
+    async verifyUser(email: string, password: string): Promise<Auth | null> {
         try {
             const user = await User.findOne({
                 where: {
                     email,
-                    role
                 },
             });
 

@@ -6,8 +6,8 @@ export class AuthController {
     constructor(private useCase: AuthUseCase) {}
 
     async run(req: Request, res: Response): Promise<void> {
-        const { email, password, role } = req.body;
-        const authResponse = await this.useCase.run(email, password, role);
+        const { email, password} = req.body;
+        const authResponse = await this.useCase.run(email, password);
 
         if (authResponse.status === 'success') {
             const user = {

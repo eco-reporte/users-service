@@ -6,4 +6,5 @@ export interface CreateUserDTO {
     role: string;
     gender: string;
     phone: string;
+    code: string;
 }

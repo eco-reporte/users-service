@@ -11,11 +11,12 @@ export class MysqlAuthRepository implements AuthRepository {
         this.passwordService = new PasswordService();
     }
     
-    async verifyUser(email: string, password: string): Promise<Auth | null> {
+    async verifyUser(email: string, password: string, role: string): Promise<Auth | null> {
         try {
             const user = await User.findOne({
                 where: {
                     email,
+                    role
                 },
             });
 
@@ -31,7 +32,7 @@ export class MysqlAuthRepository implements AuthRepository {
             }
 
             // Retorna un objeto Auth con los datos del usuario autenticado
-            return new Auth(user.email, user.password);
+            return new Auth(user.email, user.password, user.role, user.name, user.lastName, user.gender, user.phone, user.code);
         } catch (error) {
             console.error('Error verifying user:', error);
             return null; // Manejo de errores, retorna null en caso de error

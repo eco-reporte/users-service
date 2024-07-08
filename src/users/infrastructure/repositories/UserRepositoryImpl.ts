@@ -7,7 +7,7 @@ import { UserModel } from '../orm/UserModel';
 export class UserRepositoryImpl implements UserRepository {
 
     async createUser(userDTO: CreateUserDTO): Promise<User> {
-        const { name,lastName, email, password, role, gender, phone } = userDTO;
+        const { name,lastName, email, password, role, gender, phone, code } = userDTO;
 
         // Asegúrate de que password sea un string definido
         const createdUser = await UserModel.create({
@@ -18,6 +18,7 @@ export class UserRepositoryImpl implements UserRepository {
             role,
             gender,
             phone,
+            code,
         });
 
         return createdUser;

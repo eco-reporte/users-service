@@ -10,7 +10,7 @@ const authController = new AuthController(authUseCase);
 const router = espress.Router();
 
 router.post('/auth', async (req, res) => {
-    const response = await authController.run(req);
+    const response = await authController.run(req, res);
     res.json(response);
 });
 

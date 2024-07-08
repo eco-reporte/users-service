@@ -12,6 +12,7 @@ interface UserAttributes {
     role: string;
     gender: string;
     phone: string;
+    code: string;
 }
 
 interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
@@ -25,6 +26,7 @@ export class UserModel extends Model<UserAttributes, UserCreationAttributes> imp
     public role!: string;
     public gender!: string;
     public phone!: string;
+    public code!: string;
 }
 
 UserModel.init(
@@ -62,7 +64,13 @@ UserModel.init(
         phone: {
             type: DataTypes.STRING,
             allowNull: false,
-    },},
+        },
+        code: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+
+    },
     {
         sequelize,
         

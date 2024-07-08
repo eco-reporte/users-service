@@ -67,7 +67,7 @@ UserModel.init(
         },
         code: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
 
     },

@@ -1,5 +1,5 @@
 import { DataTypes, Model, Optional } from 'sequelize';
-import { sequelize } from './sequelize';
+import sequelize from '../../../database/database';  // Importa la instancia de Sequelize configurada
 
 
 

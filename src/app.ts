@@ -22,7 +22,9 @@ const GATEWAY = process.env.SERVICE_NAME;
 
 app.use('/login', authRoutes);
 app.use('/user', userRoutes);
-app.use('/api/v1/', proxy('http://localhost:3004'));
+
+app.use('/api/education/', proxy('http://localhost:3002'));
+app.use('/api/community/', proxy('http://localhost:3004'));
 
 
 sequelize.sync().then(() => {

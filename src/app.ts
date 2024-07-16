@@ -7,6 +7,8 @@ import cors from 'cors';
 import proxy from "express-http-proxy";
 import {Signale} from "signale";
 import morgan from "morgan";
+import { authMiddleware } from './jwt/middleware/security'; // Importa el middleware de autenticación
+
 
 const app:Application = express();
 const signale = new Signale();
@@ -23,8 +25,8 @@ const GATEWAY = process.env.SERVICE_NAME;
 app.use('/login', authRoutes);
 app.use('/user', userRoutes);
 
-app.use('/api/education/', proxy('http://localhost:3002'));
-app.use('/api/community/', proxy('http://localhost:3004'));
+app.use('/api/education/', authMiddleware, proxy('http://localhost:3002'));
+app.use('/api/community/', authMiddleware, proxy('http://localhost:3004'));
 
 
 sequelize.sync().then(() => {

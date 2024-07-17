@@ -8,6 +8,7 @@ import proxy from "express-http-proxy";
 import {Signale} from "signale";
 import morgan from "morgan";
 import { authMiddleware } from './jwt/middleware/security'; // Importa el middleware de autenticación
+import { createProxyMiddleware } from 'http-proxy-middleware';
 
 
 const app:Application = express();
@@ -25,7 +26,11 @@ const GATEWAY = process.env.SERVICE_NAME;
 app.use('/login', authRoutes);
 app.use('/user', userRoutes);
 
-app.use('/api/education/', authMiddleware, proxy('http://localhost:3002'));
+app.use('/api/education/', authMiddleware, createProxyMiddleware({
+    target: 'http://localhost:3002',
+    changeOrigin: true,
+}));
+
 app.use('/api/community/', authMiddleware, proxy('http://localhost:3004'));
 
 

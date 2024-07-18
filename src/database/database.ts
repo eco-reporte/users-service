@@ -1,15 +1,16 @@
 // src/infrastructure/database/sequelize.ts
 
 import { Sequelize } from 'sequelize';
+require('dotenv').config();
 
 // Configuración de conexión a la base de datos MySQL
 const sequelize = new Sequelize({
-  dialect: 'mysql',       // Selecciona el dialecto de la base de datos
-  host: 'localhost',      // Dirección del servidor de la base de datos
-  port: 3306,             // Puerto del servidor de la base de datos
-  username: 'root', // Nombre de usuario para la conexión
-  password: '211218', // Contraseña del usuario
-  database: 'db_eco_reporte', // Nombre de la base de datos
+  dialect: process.env.DB_DIALECT as any, // Selecciona el dialecto de la base de datos
+  host: process.env.DB_HOST, // Dirección del servidor de la base de datos
+  port: Number(process.env.DB_PORT), // Puerto del servidor de la base de datos
+  username: process.env.DB_USERNAME, // Nombre de usuario para la conexión
+  password: process.env.DB_PASSWORD, // Contraseña del usuario
+  database: process.env.DB_NAME, // Nombre de la base de datos
 });
 
 // Función para conectar a la base de datos y sincronizar modelos (opcional)

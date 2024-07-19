@@ -12,6 +12,7 @@ type AuthResponse = {
         gender?: string;
         phone?: string;
         code?: string;
+        id?: number;
     };
     token?: string;
     message?: string;
@@ -46,6 +47,7 @@ export class AuthUseCase {
                     gender: user.gender,
                     phone: user.phone,
                     code: user.code,
+                    id: user.id,
                 },
                 token,
             };

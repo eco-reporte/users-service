@@ -12,6 +12,7 @@ class User extends Model {
     public gender!: string;
     public phone!: string;
     public code!: string;
+    public id!: number;
 
     // Aquí podrías agregar métodos personalizados o relaciones con otros modelos
 }

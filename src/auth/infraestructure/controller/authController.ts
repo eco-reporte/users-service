@@ -18,6 +18,7 @@ export class AuthController {
                 gender: authResponse.user?.gender,
                 phone: authResponse.user?.phone,
                 code: authResponse.user?.code,
+                id: authResponse.user?.id,
             };
 
             res.status(200).json({

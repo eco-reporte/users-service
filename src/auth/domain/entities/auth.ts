@@ -7,7 +7,8 @@ export class Auth {
         readonly lastName: string,
         readonly gender: string,
         readonly phone: string,
-        readonly code: string
+        readonly code: string,
+        readonly id: number
     ) {}
 }
 

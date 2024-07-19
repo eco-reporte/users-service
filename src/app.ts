@@ -9,6 +9,7 @@ import {Signale} from "signale";
 import morgan from "morgan";
 import { authMiddleware } from './jwt/middleware/security'; // Importa el middleware de autenticación
 import { createProxyMiddleware } from 'http-proxy-middleware';
+import { create } from "domain";
 
 
 const app:Application = express();
@@ -32,7 +33,6 @@ app.use('/api/education/', authMiddleware, createProxyMiddleware({
 }));
 
 app.use('/api/community/', authMiddleware, proxy('http://localhost:3004'));
-
 
 sequelize.sync().then(() => {
     app.listen(PORT, () => {

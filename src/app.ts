@@ -36,6 +36,6 @@ app.use('/api/community/', authMiddleware, proxy('http://localhost:3004'));
 
 sequelize.sync().then(() => {
     app.listen(PORT, () => {
-        console.log('Server is running on port 3001');
+        console.log('Server is running on port 3001 ready');
     });
 });

@@ -32,7 +32,8 @@ app.use('/api/education/', authMiddleware, createProxyMiddleware({
     changeOrigin: true,
 }));
 
-app.use('/api/community/', authMiddleware, proxy('http://localhost:3004'));
+app.use('/api/community/', authMiddleware, proxy('http://98.80.59.77:3004'));
+app.use('/api/reporting/', authMiddleware, proxy('http://3.218.9.165:3003'));
 
 sequelize.sync().then(() => {
     app.listen(PORT, () => {

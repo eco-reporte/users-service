@@ -15,5 +15,6 @@ router.get('/find/:id', (req, res) => userController.getUserById(req, res));
 router.get('/find-email/:email', (req, res) => userController.getUserByEmail(req, res));
 router.delete('/delete-user/:id', (req, res) => userController.deleteUserById(req, res));
 router.delete('/delete-email/:email', (req, res) => userController.deleteUserByEmail(req, res));
+router.put('/update-email/:email', (req, res) => userController.updateUserByEmail(req, res));
 
 export default router;

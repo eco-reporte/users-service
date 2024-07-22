@@ -1,6 +1,7 @@
 import { UserRepository } from '../../domain/repositories/UserRepository';
 import { CreateUserDTO } from '../dto/CreateUserDTO';
 import { PasswordService } from '../../domain/services/PasswordService';
+import { User } from '../../domain/entities/User';
 
 export class UserService {
     constructor(
@@ -32,5 +33,10 @@ export class UserService {
     async deleteUserByEmail(email: string) {
         const deleted = await this.userRepository.deleteUserByEmail(email);
         return deleted;
+    }
+
+    async updateUserByEmail(email: string, user: Partial<User>) {
+        const updatedUser = await this.userRepository.updateUserByEmail(email, user);
+        return updatedUser;
     }
 }

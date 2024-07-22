@@ -56,4 +56,18 @@ export class UserRepositoryImpl implements UserRepository {
 
         return deletedUser > 0; //server delete
     }
+
+    // actualiza un usuario por email tipo put
+    async updateUserByEmail(email: string, user: Partial<User>): Promise<User | null> {
+        const [updatedUser] = await UserModel.update(user, { where: { email } });
+
+        if (!updatedUser) {
+            return null;
+        }
+
+        const userUpdated = await UserModel.findOne({ where: { email } });
+
+        return userUpdated;
+    }
+    
 }

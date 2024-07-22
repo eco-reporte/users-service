@@ -54,4 +54,15 @@ export class UserController {
             res.status(400).json({ error: error.message });
         }
     }
+
+    async updateUserByEmail(req: Request, res: Response) {
+        try {
+            const { email } = req.params;
+            const updateUserDTO: CreateUserDTO = req.body;
+            const user = await this.authService.updateUserByEmail(email, updateUserDTO);
+            res.status(200).json(user);
+        } catch (error: any) { // Añadir ': any' para manejar el error como un tipo genérico
+            res.status(400).json({ error: error.message });
+        }
+    }
 }
